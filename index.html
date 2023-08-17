@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focalleap Airtime App</title>
+  </head>
+  <body></body>
+  <script>
+    var airtime_balance = 0;
+    var data_balance = 0;
+    while (true) {
+      const options = prompt(
+        `Welcome to Focalleap Bank App!!     
+        Pleas select one of the following:     
+        1. Check Balance *123#   
+        2. Buy Airtime *100# 
+        3. Borrow Airtime *101#            
+        4. Exit *  `
+      );
+      if (options !== "*123#" && options !== "*100#" && options !== "*101#" && options !== "*") {
+        alert(
+          `Invalid prompt!         
+        Pleas select one of the following:     
+        1. Check Balance *123#   
+        2. Buy Airtime *100# 
+        3. Borrow Airtime *101#            
+        6. Exit *  `
+        );
+        continue;
+      }
+      if (options === "*123#") {
+        alert(`Balance:
+        Airtime = ${airtime_balance}
+        Data = ${data_balance}`);
+        continue;
+      } else if (options === "*100#") {
+        var amount = parseFloat(prompt("Enter airtime amount to be bought:"));
+        airtime_balance = airtime_balance + amount;
+        continue;
+      } else if (options === "*101#") {
+        var amount = parseFloat(prompt("Enter airtime amount to be borrowed:"));
+        if (airtime_balance > 0) {
+          alert("Your airtime has not been exhausted");
+          continue;
+        } else {
+          airtime_balance = airtime_balance - amount;
+          continue;
+        }
+      } else if (options === "*") {
+        alert("Thank you for using Focalleap Airtime App!!");
+        break;
+      }
+    }
+  </script>
+</html>
